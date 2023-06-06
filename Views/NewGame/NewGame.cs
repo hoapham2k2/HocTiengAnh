@@ -94,8 +94,8 @@ namespace HocTiengAnh.Views.NewGame
                 // mảgin trái, trên, phải, dưới
                 btn.Margin = new Padding(3, 3, 3, 20);
                 Image img = URLToImage(i.CategoryImagePath);
-                img = ImageToFit(img, btn.Size);
-                btn.Image = img;
+                btn.BackgroundImage = img;
+                btn.BackgroundImageLayout = ImageLayout.Zoom;
 
                 btn.Text = i.CategoryName;
                 btn.Tag = i.CategoryID;
