@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HocTiengAnh.Services;
 using System.Media;
+using System.Net;
 
 namespace HocTiengAnh.Views.NewGame
 {
@@ -92,6 +93,8 @@ namespace HocTiengAnh.Views.NewGame
                 btn.Size = new Size(166, 150);
                 // mảgin trái, trên, phải, dưới
                 btn.Margin = new Padding(3, 3, 3, 20);
+                Image img = URLToImage(i.CategoryImagePath);
+                btn.Image = img;
 
                 btn.Text = i.CategoryName;
                 btn.Tag = i.CategoryID;
@@ -99,6 +102,19 @@ namespace HocTiengAnh.Views.NewGame
                 this.FlowLayoutPanelCategory.Controls.Add(btn);
             }
 
+        }
+
+        public Image URLToImage(string url)
+        {
+            var request = WebRequest.Create(url);
+            request.Method = "GET";
+            using(var response = request.GetResponse())
+            {
+                using(var stream = response.GetResponseStream())
+                {
+                      return Bitmap.FromStream(stream);
+                }
+            }
         }
 
         private void btnCategory_Click(object sender, EventArgs e)
