@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             NewGamePanel = new Panel();
+            CheckBoxSound = new CheckBox();
             btnNext = new Button();
             trackBar1 = new TrackBar();
             LevelTitle = new Label();
@@ -36,9 +37,10 @@
             FlowLayoutPanelCategory = new FlowLayoutPanel();
             btnBackHome = new Button();
             label1 = new Label();
-            CheckBoxSound = new CheckBox();
+            button1 = new Button();
             NewGamePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
+            FlowLayoutPanelCategory.SuspendLayout();
             SuspendLayout();
             // 
             // NewGamePanel
@@ -57,6 +59,17 @@
             NewGamePanel.Name = "NewGamePanel";
             NewGamePanel.Size = new Size(896, 748);
             NewGamePanel.TabIndex = 0;
+            // 
+            // CheckBoxSound
+            // 
+            CheckBoxSound.AutoSize = true;
+            CheckBoxSound.Location = new Point(14, 627);
+            CheckBoxSound.Name = "CheckBoxSound";
+            CheckBoxSound.Size = new Size(119, 24);
+            CheckBoxSound.TabIndex = 9;
+            CheckBoxSound.Text = "On/off sound";
+            CheckBoxSound.UseVisualStyleBackColor = true;
+            CheckBoxSound.CheckedChanged += CheckBoxSound_CheckedChanged;
             // 
             // btnNext
             // 
@@ -105,6 +118,7 @@
             // 
             // FlowLayoutPanelCategory
             // 
+            FlowLayoutPanelCategory.Controls.Add(button1);
             FlowLayoutPanelCategory.Location = new Point(14, 141);
             FlowLayoutPanelCategory.Margin = new Padding(3, 4, 3, 4);
             FlowLayoutPanelCategory.Name = "FlowLayoutPanelCategory";
@@ -133,16 +147,14 @@
             label1.Text = "New Game";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // CheckBoxSound
+            // button1
             // 
-            CheckBoxSound.AutoSize = true;
-            CheckBoxSound.Location = new Point(14, 627);
-            CheckBoxSound.Name = "CheckBoxSound";
-            CheckBoxSound.Size = new Size(119, 24);
-            CheckBoxSound.TabIndex = 9;
-            CheckBoxSound.Text = "On/off sound";
-            CheckBoxSound.UseVisualStyleBackColor = true;
-            CheckBoxSound.CheckedChanged += CheckBoxSound_CheckedChanged;
+            button1.Location = new Point(3, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(236, 112);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
             // 
             // NewGame
             // 
@@ -157,6 +169,7 @@
             NewGamePanel.ResumeLayout(false);
             NewGamePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
+            FlowLayoutPanelCategory.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -174,5 +187,6 @@
         private Label LevelValue;
         private Button btnNext;
         private CheckBox CheckBoxSound;
+        private Button button1;
     }
 }

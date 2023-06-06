@@ -94,6 +94,7 @@ namespace HocTiengAnh.Views.NewGame
                 // mảgin trái, trên, phải, dưới
                 btn.Margin = new Padding(3, 3, 3, 20);
                 Image img = URLToImage(i.CategoryImagePath);
+                img = ImageToFit(img, btn.Size);
                 btn.Image = img;
 
                 btn.Text = i.CategoryName;
@@ -108,13 +109,29 @@ namespace HocTiengAnh.Views.NewGame
         {
             var request = WebRequest.Create(url);
             request.Method = "GET";
-            using(var response = request.GetResponse())
+            using (var response = request.GetResponse())
             {
-                using(var stream = response.GetResponseStream())
+                using (var stream = response.GetResponseStream())
                 {
-                      return Bitmap.FromStream(stream);
+                    return Bitmap.FromStream(stream);
                 }
             }
+        }
+
+        public Image ImageToFit(Image image, Size size)
+        {
+            if (image == null || size == null)
+                return null;
+            var ratioX = (double)size.Width / image.Width;
+            var ratioY = (double)size.Height / image.Height;
+            var ratio = Math.Min(ratioX, ratioY);
+            var newWidth = (int)(image.Width * ratio);
+            var newHeight = (int)(image.Height * ratio);
+            var newImage = new Bitmap(newWidth, newHeight);
+            Graphics.FromImage(newImage).DrawImage(image, 0, 0, newWidth, newHeight);
+            return newImage;
+
+
         }
 
         private void btnCategory_Click(object sender, EventArgs e)
